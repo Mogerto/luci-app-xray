@@ -65,20 +65,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: artifacts/*.ipk
-          body: |
-            ## luci-app-xray for MediaTek Filogic (aarch64_cortex-a53)
-            
-            **Target:** mediatek/filogic
-            **Architecture:** aarch64_cortex-a53
-            **OpenWrt Version:** 24.10.4
-            
-            ### Installation
-```bash
-            opkg update
-            opkg install firewall4 kmod-nft-tproxy luci-base xray-core dnsmasq ca-bundle v2ray-geoip v2ray-geosite
-            opkg install luci-app-xray_*.ipk luci-app-xray-status_*.ipk
-            /etc/init.d/xray_core enable && /etc/init.d/xray_core start
-            /etc/init.d/rpcd restart && rm -rf /tmp/luci-*
-```
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
